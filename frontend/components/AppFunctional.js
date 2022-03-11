@@ -25,8 +25,8 @@ export default function AppFunctional(props) {
   }
 
     const onChange = e => {
-      const {value} = e.target
-      this.setState({...this.state, email: value})
+      const {value} = e.target;
+      setEmail(value);
     }
     
 
@@ -59,14 +59,12 @@ export default function AppFunctional(props) {
   }
     const down = () =>{
       if(y<3){
-        if(y >= 1 && y < 3){
           setY(y+1)
           setSteps(steps + 1)
         } else {
           setMessage("You can't go down")
         }
     }
-  }
 
     const onSubmit = event => {
       event.preventDefault()
@@ -78,10 +76,10 @@ export default function AppFunctional(props) {
         'email': email
       })
       .then(response=> {
-        setMessage(res.data.message)
+        setMessage(response.data.message)
       })
       .catch(error=> {
-        setMessage(err.response.data.message)
+        setMessage(error.response.data.message)
       })
       setEmail('');
     }
